@@ -20,22 +20,22 @@ const User = require("./models/User");
 const app = express();
 
 //use cors
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", req.headers.origin);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header("Access-Control-Allow-methods", "GET,POST,DELETE,PUT");
-  next();
-});
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     credentials: true,
+//   })
+// );
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", req.headers.origin);
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   res.header("Access-Control-Allow-Credentials", true);
+//   res.header("Access-Control-Allow-methods", "GET,POST,DELETE,PUT");
+//   next();
+// });
 // easy cookie handling
 app.use(cookieParser());
 // to set sessions
@@ -105,6 +105,10 @@ app.post("/refresh_token", (req, res) => {
 //     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 //   });
 // }
+
+app.get("/", (req, res) => {
+  res.send("I work o");
+});
 const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
