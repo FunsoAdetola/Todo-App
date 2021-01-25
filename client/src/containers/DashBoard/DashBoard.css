@@ -1,0 +1,54 @@
+.dashboard {
+  /* height: calc(100vh - 4px); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+.dashboard-div {
+  width: 60%;
+  text-align: center;
+  box-shadow: 4px 3px 7px 2px #00000040;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+progress {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+progress[value]::-webkit-progress-bar {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #eee;
+}
+progress[value]::-webkit-progress-value {
+  width: 100%;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #0e49b5;
+}
+.tasks {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.number {
+  font-weight: bold;
+  font-size: 20px;
+}
+span {
+  display: block;
+}
+@media (max-width: 768px) {
+  .dashboard-div {
+    width: 90%;
+  }
+}

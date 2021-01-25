@@ -1,0 +1,46 @@
+.form {
+  text-align: center;
+  margin: 2rem auto;
+  width: 60%;
+}
+.login-signup input {
+  background-color: #fff;
+  display: block;
+  margin: 0 auto 1rem;
+  width: 70%;
+  border-radius: 10px;
+  height: 3rem;
+  border: none;
+  outline: none;
+  text-indent: 0.5rem;
+  font-size: 20px;
+}
+.login-signup button,
+.home-button button {
+  width: 70%;
+  margin: 0.5rem auto;
+  border-radius: 10px;
+  /* background: #6155a6; */
+  color: #f4f4f4;
+  border: none;
+  outline: none;
+  height: 3rem;
+  font-size: 20px;
+}
+.login-bottom-text {
+  text-align: center;
+}
+.login-bottom-text .bottom-link {
+  color: red;
+  margin-left: 0.5rem;
+}
+@media (max-width: 768px) {
+  .form {
+    width: 100%;
+  }
+  .login-signup input,
+  .login-signup button,
+  .home-button button {
+    width: 80%;
+  }
+}
