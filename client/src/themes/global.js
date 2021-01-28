@@ -162,8 +162,13 @@ font-weight: bold;
 font-size:16px;
 text-align:center;
 }
+@media(max-width:768px){
+  .log-out{
+    width:40%;
+  }
+}
 .post-sign-up{
-  height: calc(100wh - 80px);
+  height: 100vh;
   display:flex;
   flex-direction: column;
   align-items: center;

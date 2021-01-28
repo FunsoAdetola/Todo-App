@@ -66,7 +66,7 @@ export default function TodoList() {
               />
             </div>
           ))}
-        {empty && <div>You do not have any Todo List Items</div>}
+        {items.length === 0 && <div>You do not have any Todo List Items</div>}
       </div>
       <LogOut setUser={setUser} />
     </div>

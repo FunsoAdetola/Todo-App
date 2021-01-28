@@ -33,8 +33,8 @@ export default function LogForm({ formTitle, LogIn, title }) {
       .then((result) => {
         if (result.message) {
           setError(result.message);
+          return;
         }
-        console.log(result);
         if (result.accesstoken) {
           setUser({
             email: result.email,
