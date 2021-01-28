@@ -65,16 +65,18 @@ export const changeFilter = (newFilter, setFilter) => {
 
 //@ filter active, complete, and total tasks
 export const getTodos = (items, filter) => {
-  return items.filter((item) => {
-    if (filter === "all") {
-      return item;
-    }
-    if (filter === "completed") {
-      return item.checked;
-    } else {
-      return !item.checked;
-    }
-  });
+  return items
+    .sort((a, b) => (a.date > b.date ? -1 : 1))
+    .filter((item) => {
+      if (filter === "all") {
+        return item;
+      }
+      if (filter === "completed") {
+        return item.checked;
+      } else {
+        return !item.checked;
+      }
+    });
 };
 
 //@ change the number of tasks

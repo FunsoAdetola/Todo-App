@@ -20,12 +20,16 @@ export const GlobalStyles = createGlobalStyle`
     font-family: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     transition: all 0.25s linear;
   }
+  .todo-list{
+    background: ${({ theme }) => theme.todoList};;
+  }
   nav{
+
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 80px;
-      background:transparent;
+      ${"" /* background: ${({ theme }) => theme.body};; */}
       border-bottom: 1px solid ${({ theme }) => theme.navText};
       padding: 0 2rem;
   }

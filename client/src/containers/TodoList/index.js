@@ -24,9 +24,8 @@ export default function TodoList() {
 
   if (!accesstoken) return <Redirect from="" to="user/login" noThrow />;
   return (
-    <div>
+    <div className="todo-list">
       <NavBar />
-
       <DashBoard
         total={items.length}
         complete={filterNumber(items)}
@@ -39,9 +38,8 @@ export default function TodoList() {
           }}
         />
         <Select changeFilter={changeFilter} setFilter={setFilter} />
-        {getTodos(items, filter)
-          .sort((a, b) => (a.date > b.date ? -1 : 1))
-          .map(({ itemId, title, description, checked, date }) => (
+        {getTodos(items, filter).map(
+          ({ itemId, title, description, checked, date }) => (
             <div className="note" key={itemId}>
               <input
                 className="note-checkbox"
@@ -65,7 +63,8 @@ export default function TodoList() {
                 }}
               />
             </div>
-          ))}
+          )
+        )}
         {items.length === 0 && <div>You do not have any Todo List Items</div>}
       </div>
       <LogOut setUser={setUser} />

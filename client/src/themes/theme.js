@@ -8,6 +8,7 @@ export const lightTheme = {
   navBrandText: "#0e49b5",
   noteBody: "#f1f5f8;",
   home: "white",
+  todoList: "#cfd3ce",
 };
 
 export const darkTheme = {
@@ -20,4 +21,5 @@ export const darkTheme = {
   navBrandText: "#FAFAFA",
   noteBody: "#686d76",
   home: "#363537",
+  todoList: "#363537",
 };
