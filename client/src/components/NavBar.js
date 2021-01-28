@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../themes/global";
 import Toggle from "../themes/toggle";
@@ -16,7 +16,6 @@ export default function NavBar({ logOut }) {
         <div className="nav-brand">
           <Logo />
         </div>
-        <div className="nav-text">TODO</div>
         <div>
           <Toggle theme={theme} toggleTheme={toggleTheme} />
         </div>

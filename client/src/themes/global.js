@@ -77,11 +77,34 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     align-items: center;
   }
-  .nav-text{
-    font-weight:900;
-    font-size: 40px;
-    color:  ${({ theme }) => theme.navBrandText};
+  .hamburger{
+    cursor:pointer;
   }
+  .nav-text{
+    color:  ${({ theme }) => theme.navBrandText};
+   font-size: 30px;
+  }
+  @media(max-width:768px){
+    .nav-text{
+      display:none;
+    }
+  }
+  .open-nav{
+    z-index:1000;
+    width: 30%;
+    min-height: 100vh;
+    transform: translateX(0);
+    transition: all 2s ease-in-out;
+  }
+  .close-nav{
+    transform: translateX(-100%);
+  }
+  .open-nav svg{
+  fill: ${({ theme }) => theme.text};
+  width: 20px;
+  height: 20px;
+
+}
   .login-signup button,
 .home-button button {
   background:${({ theme }) => theme.navText};
@@ -118,6 +141,8 @@ textarea{
 }
 .note-title{
   color:  ${({ theme }) => theme.navBrandText};
+  font-size: 20px;
+  text-transform:capitalize;
 }
 .view-note svg{
   fill: ${({ theme }) => theme.text};

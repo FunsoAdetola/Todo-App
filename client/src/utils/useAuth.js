@@ -22,7 +22,7 @@ export function useAuth() {
         console.log(result);
         setTimeout(() => {
           result && setLoading(false);
-        }, 2000);
+        }, 1000);
         if (result.accesstoken) {
           setUser(result);
           sendAccessToken(result);

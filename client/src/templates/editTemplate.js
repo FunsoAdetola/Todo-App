@@ -20,11 +20,11 @@ export default function EditTemplate({
             value={title}
           />
         </div>
-        <input
+        <textarea
           onChange={(e) => setEditedDescription(e.target.value)}
           type="text"
           value={description}
-        />
+        ></textarea>
         <div className="btn-group">
           <button
             onClick={cancelEdit}

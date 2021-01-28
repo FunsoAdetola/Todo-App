@@ -108,8 +108,8 @@ router.put("/toggle/:itemId", (req, res) => {
 //@desc edit an item
 //@access public
 
-router.post("/edit/:itemId", (req, res) => {
-  Item.updateOne(
+router.put("/edit/:itemId", (req, res) => {
+  Item.findOneAndUpdate(
     { todos: { $elemMatch: { itemId: req.params.itemId } } },
     { $set: { todos: req.body } },
     (err, updated) => {

@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const ToggleContainer = styled.button`
   background: ${({ theme }) => theme.gradient};
   border: 2px solid ${({ theme }) => theme.toggleBorder};
-  border-radius: 50%;
+  border-radius: 100%;
   cursor: pointer;
   outline: none;
   display: flex;
@@ -19,10 +19,7 @@ export const ToggleContainer = styled.button`
   height: 50px;
  
   }
-  @media (max-width: 768px) {
-      width: 5rem;
-      height:30px;
-  }
+
   svg {
     height: 90%;
     width: 90%;

@@ -1,10 +1,10 @@
 .dashboard {
-  /* height: calc(100vh - 4px); */
+  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
+  padding: 3rem 1rem;
 }
 .dashboard-div {
   width: 60%;
@@ -14,7 +14,7 @@
   padding: 1rem 2rem;
 }
 progress {
-  margin: 2rem 0;
+  margin: 0 0 2rem;
   width: 100%;
 }
 
@@ -38,17 +38,32 @@ progress[value]::-webkit-progress-value {
 .tasks {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+.task {
+  margin-top: 2rem;
+  margin-bottom: 0.2rem;
+  font-size: 10px;
+  float: right;
+}
+.dashboard-div h2 {
+  text-transform: capitalize;
 }
 .number {
   font-weight: bold;
   font-size: 20px;
+}
+.words {
+  font-size: 16px;
 }
 span {
   display: block;
 }
 @media (max-width: 768px) {
   .dashboard-div {
-    width: 90%;
+    width: 100%;
+  }
+  .words {
+    font-size: 10px;
   }
 }
