@@ -1,23 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
 import { UserContext } from "../App";
 import { port } from "./port";
+import { getAccessToken } from "./accessToken";
 
 export default function useFetch() {
   const [user, setUser] = useContext(UserContext);
   const [items, setItems] = useState([]);
   const [empty, setEmpty] = useState(false);
 
+  const [accesstoken, email, firstName] = getAccessToken();
+
   const fetchItems = async () => {
     await fetch(`${port}/todo-list/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Basic ${user.email}:${user.accesstoken}`,
+        Authorization: `Basic ${email}:${accesstoken}`,
       },
     }).then((response) => {
       if (response.status === 404) {
         setEmpty(true);
-        console.log(response);
         return;
       }
       if (response.status === 200) {
@@ -29,8 +31,6 @@ export default function useFetch() {
           }
           const todoList = todos;
           setItems(todoList);
-          console.log(todos);
-          console.log(items);
         });
       }
     });
@@ -38,8 +38,8 @@ export default function useFetch() {
 
   useEffect(() => {
     fetchItems();
-    // items.length === 0 && setEmpty(true);
+    setUser({ accesstoken, email, firstName });
   }, []);
 
-  return [items, setItems, empty, setEmpty];
+  return [accesstoken, firstName, items, setItems, empty];
 }

@@ -6,7 +6,7 @@ export default function DashBoard({ complete, total, user }) {
   return (
     <div className="dashboard">
       <div className="dashboard-div">
-        <h2> Hello {user.firstName.toUpperCase()}</h2>
+        <h2> Hello {user.toUpperCase()}</h2>
         <p>{getTime()}</p>
         <progress max="100" value={(complete / total) * 100}></progress>
         <div className="tasks">

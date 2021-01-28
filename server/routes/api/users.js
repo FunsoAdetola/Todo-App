@@ -72,23 +72,8 @@ router.post("/login", (req, res) => {
           } else {
             // creating access and refresh tokens
             const accesstoken = createAccessToken(user.email);
-            const refreshtoken = createRefreshToken(user.email);
 
-            User.updateOne(
-              { email: user.email },
-              { $set: { refreshToken: refreshtoken } },
-              (err, updatedUser) => {
-                console.log(updatedUser);
-              }
-            );
-            sendToken(
-              req,
-              res,
-              accesstoken,
-              refreshtoken,
-              user.firstName,
-              user.email
-            );
+            sendToken(req, res, accesstoken, user.firstName, user.email);
             return;
           }
         } else {
@@ -96,6 +81,30 @@ router.post("/login", (req, res) => {
         }
       });
     }
+  });
+});
+
+router.post("/access_token", (req, res) => {
+  const { authorization } = req.headers;
+  const [, header] = authorization.split(" ");
+  const [email, token] = header.split(":");
+  console.log(token);
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
+    console.log(payload);
+    if (err) {
+      console.log(err);
+      return res.json({ accesstoken: "" });
+    }
+    User.findOne({ email: payload.email }, (err, user) => {
+      if (!user) {
+        return res.json({ accesstoken: "" });
+      } else {
+        // if token exists create new refresh and access token
+        const accesstoken = createAccessToken(user.email);
+        sendToken(req, res, accesstoken, user.firstName, user.email);
+      }
+    });
   });
 });
 

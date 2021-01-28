@@ -91,7 +91,7 @@ export const postEdited = (id, user, items, setItems, editedItem) => {
   setItems(newItemList);
 
   fetch(`${port}/todo-list/edit/:${id}`, {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },

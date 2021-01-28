@@ -5,25 +5,20 @@ const createAccessToken = (email) => {
   const user = {
     email,
   };
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "15m" });
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "7d" });
 };
 
-const createRefreshToken = (email) => {
-  const user = {
-    email,
-  };
-  return jwt.sign(email, process.env.REFRESH_TOKEN_SECRET);
-  // {
-  //   expiresIn: "7d",
-  // }
-};
+// const createRefreshToken = (email) => {
+//   const user = {
+//     email,
+//   };
+//   return jwt.sign(email, process.env.REFRESH_TOKEN_SECRET);
+//   // {
+//   //   expiresIn: "7d",
+//   // }
+// };
 
-const sendToken = (req, res, accesstoken, refreshtoken, firstName, email) => {
-  res.cookie("refreshtoken", refreshtoken, {
-    httpOnly: true,
-    path: "/refresh_token",
-    sameOrigin: "none",
-  });
+const sendToken = (req, res, accesstoken, firstName, email) => {
   res.json({
     accesstoken,
     email: email,
@@ -31,17 +26,7 @@ const sendToken = (req, res, accesstoken, refreshtoken, firstName, email) => {
   });
 };
 
-const sendRefreshToken = (response, refreshtoken) => {
-  response.cookie("refreshtoken", refreshtoken, {
-    httpOnly: true,
-    path: "/refresh_token",
-  });
-  return;
-};
-
 module.exports = {
   createAccessToken,
-  createRefreshToken,
   sendToken,
-  sendRefreshToken,
 };

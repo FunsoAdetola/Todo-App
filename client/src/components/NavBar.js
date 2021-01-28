@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../themes/global";
 import Toggle from "../themes/toggle";

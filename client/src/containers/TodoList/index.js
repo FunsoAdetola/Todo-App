@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import DashBoard from "../../containers/DashBoard/DashBoard";
 import "./index.css";
 import TodoForm from "../../components/TodoForm";
@@ -6,7 +6,6 @@ import TodoItem from "../../components/TodoItem";
 import { Redirect } from "react-router-dom";
 import { UserContext } from "../../App";
 import useFetch from "../../utils/useFetch";
-import useAuth from "../../utils/useAuth";
 import Select from "../../components/Select";
 import LogOut from "../../components/LogOut";
 import NavBar from "../../components/NavBar";
@@ -16,15 +15,14 @@ import {
   getTodos,
   filterNumber,
   toggleCheck,
-  postTodoList,
 } from "../../utils/functions";
 
 export default function TodoList() {
+  const [accesstoken, firstName, items, setItems, empty] = useFetch();
   const [user, setUser] = useContext(UserContext);
-  const [items, setItems, empty, setEmpty] = useFetch();
   const [filter, setFilter] = useState("all");
 
-  if (!user.accesstoken) return <Redirect from="" to="user/login" noThrow />;
+  if (!accesstoken) return <Redirect from="" to="user/login" noThrow />;
   return (
     <div>
       <NavBar />
@@ -32,7 +30,7 @@ export default function TodoList() {
       <DashBoard
         total={items.length}
         complete={filterNumber(items)}
-        user={user}
+        user={firstName}
       />
       <div id="todo-list">
         <TodoForm
@@ -44,12 +42,12 @@ export default function TodoList() {
         {getTodos(items, filter)
           .sort((a, b) => (a.date > b.date ? -1 : 1))
           .map(({ itemId, title, description, checked, date }) => (
-            <div class="note">
+            <div className="note" key={itemId}>
               <input
                 className="note-checkbox"
                 type="checkbox"
                 checked={checked}
-                onClick={() => {
+                onChange={() => {
                   toggleCheck(itemId, items, setItems, user);
                 }}
               />

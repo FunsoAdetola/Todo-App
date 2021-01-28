@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
 import "./Home.css";

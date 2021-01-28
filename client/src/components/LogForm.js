@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../App";
 import { ReactComponent as Logo } from "../assets/icons/logo.svg";
@@ -10,7 +10,7 @@ export default function LogForm({ formTitle, LogIn, title }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [log, setLog] = useState(LogIn);
+  const [log] = useState(LogIn);
   const [error, setError] = useState("");
 
   const history = useHistory();
@@ -19,7 +19,7 @@ export default function LogForm({ formTitle, LogIn, title }) {
     e.preventDefault();
     fetch(`${port}/user/${title}`, {
       method: "POST",
-      // credentials: "include",
+
       headers: {
         "Content-Type": "application/json",
       },
@@ -41,6 +41,9 @@ export default function LogForm({ formTitle, LogIn, title }) {
             accesstoken: result.accesstoken,
             firstName: result.firstName,
           });
+          localStorage.setItem("accesstoken", result.accesstoken);
+          localStorage.setItem("email", result.email);
+          localStorage.setItem("firstName", result.firstName);
           history.push("/todo-list");
         } else {
           if (title === "sign-up") {

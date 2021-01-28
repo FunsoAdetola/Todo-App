@@ -1,13 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { port } from "../utils/port";
 
 export default function LogOut({ setUser }) {
   const history = useHistory();
   const logOut = async () => {
-    await fetch(`${port}/user/logout`, {
-      method: "POST",
-    });
+    localStorage.removeItem("accesstoken");
+    localStorage.removeItem("email");
+    localStorage.removeItem("firstName");
     setUser = {};
     history.push("/user/login");
   };
