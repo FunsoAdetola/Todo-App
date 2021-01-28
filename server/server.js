@@ -14,7 +14,7 @@ const app = express();
 // use cors
 app.use(
   cors({
-    origin: "http://localhost:3000" || "https://todo-store.netlify.app",
+    origin: "https://todo-store.netlify.app" || "http://localhost:3000",
     credentials: true,
   })
 );
